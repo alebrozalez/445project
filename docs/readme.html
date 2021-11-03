@@ -1,1 +1,94 @@
-Hola
+<div data-target="readme-toc.content" class="Box-body px-5 pb-5">
+          <article class="markdown-body entry-content container-lg" itemprop="text"><h1><a id="user-content-caravel-openfpga-ef" class="anchor" aria-hidden="true" href="#caravel-openfpga-ef"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Caravel-OpenFPGA-EF</h1>
+<p>The repo contains the FPGA layout integration with the <a href="https://github.com/efabless/caravel.git">Caravel</a> chip.
+Thee layout is an 8x8 FPGA fabric generated using <a href="https://github.com/lnis-uofu/OpenFPGA">OpenFPGA</a> and hardened using <a href="https://github.com/efabless/openlane">OpenLANE</a>.</p>
+<h1><a id="user-content-caravel-integration" class="anchor" aria-hidden="true" href="#caravel-integration"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Caravel Integration</h1>
+<h3><a id="user-content-verilog-view" class="anchor" aria-hidden="true" href="#verilog-view"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Verilog View</h3>
+<p>The 8x8 fpga interface to the managent area can be found at <a href="/Manarabdelaty/Caravel-OpenFPGA-EF/blob/master/verilog/rtl/user_project_wrapper.v">user_project_wrapper.v</a> . The fabric is conncted to the managemtent area logic analyzer, wishbone bus, and IO-ports.</p>
+<table>
+<thead>
+<tr>
+<th>Caravel-IO</th>
+<th>FPGA</th>
+<th>Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>io[0]</td>
+<td>test_en</td>
+<td>Input</td>
+</tr>
+<tr>
+<td>io[1]</td>
+<td>IO_ISOL_N</td>
+<td>Input</td>
+</tr>
+<tr>
+<td>io[7:2]</td>
+<td>EMBED-IO[10:15]</td>
+<td>Bi-directional</td>
+</tr>
+<tr>
+<td>io[11]</td>
+<td>sc_tail</td>
+<td>Output</td>
+</tr>
+<tr>
+<td>io[12]</td>
+<td>ccff_head</td>
+<td>Input</td>
+</tr>
+<tr>
+<td>io[13:14]</td>
+<td>EMBED-IO[8:9]</td>
+<td>Bi-directional</td>
+</tr>
+<tr>
+<td>io[17:23]</td>
+<td>EMBED-IO[1:8]</td>
+<td>Bi-directional</td>
+</tr>
+<tr>
+<td>io[24]</td>
+<td>EMBED-IO[0]*</td>
+<td>Bi-directional</td>
+</tr>
+<tr>
+<td>io[25]</td>
+<td>wb_la_switch</td>
+<td>Input</td>
+</tr>
+<tr>
+<td>io[26]</td>
+<td>sc_head</td>
+<td>Input</td>
+</tr>
+<tr>
+<td>io[27:34]</td>
+<td>EMBED-IO[88-95]</td>
+<td>Bi-directional</td>
+</tr>
+<tr>
+<td>io[35]</td>
+<td>ccff_tail</td>
+<td>Output</td>
+</tr>
+<tr>
+<td>io[36]</td>
+<td>clk</td>
+<td>Input</td>
+</tr>
+<tr>
+<td>io[37]</td>
+<td>prog_clk</td>
+<td>Input</td>
+</tr>
+</tbody>
+</table>
+<h3><a id="user-content-gds-view" class="anchor" aria-hidden="true" href="#gds-view"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>GDS View</h3>
+<p align="”center”">
+<a target="_blank" rel="noopener noreferrer" href="/Manarabdelaty/Caravel-OpenFPGA-EF/blob/master/doc/images/Caravel-FPGA.png"><img src="/Manarabdelaty/Caravel-OpenFPGA-EF/raw/master/doc/images/Caravel-FPGA.png" width="40%" height="40%" style="max-width: 100%;"></a>
+</p>
+</article>
+        </div>
